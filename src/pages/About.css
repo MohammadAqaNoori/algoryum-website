@@ -1,0 +1,239 @@
+/* About Hero */
+.about-hero {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(135deg, #173253 0%, #214064 55%, #2EBE67 100%);
+  overflow: hidden;
+  padding: calc(var(--spacing-section) + 60px) var(--spacing-lg) var(--spacing-section);
+}
+
+.about-hero-content {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-hero h1 {
+  color: var(--color-white);
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-lg);
+}
+
+.about-hero p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.2rem;
+  line-height: 1.7;
+}
+
+/* Mission & Vision */
+.mission-vision {
+  background: var(--color-white);
+}
+
+.mv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+}
+
+.mv-card {
+  padding: var(--spacing-xl);
+  background: var(--color-background);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.mv-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  background: rgba(46, 190, 103, 0.1);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.mv-icon {
+  color: var(--color-primary);
+}
+
+.mv-card h2 {
+  margin-bottom: var(--spacing-md);
+}
+
+.mv-card p {
+  color: var(--color-paragraph);
+  line-height: 1.8;
+}
+
+/* Values */
+.values {
+  background: var(--color-background);
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.value-card {
+  background: var(--color-white);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  transition: all var(--transition-base);
+  border: 1px solid transparent;
+}
+
+.value-card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.value-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  background: rgba(46, 190, 103, 0.1);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.value-icon {
+  color: var(--color-primary);
+}
+
+.value-card h3 {
+  margin-bottom: var(--spacing-md);
+}
+
+.value-card p {
+  color: var(--color-paragraph);
+}
+
+/* Process */
+.process {
+  background: var(--color-white);
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.process-card {
+  text-align: center;
+  padding: var(--spacing-lg);
+  position: relative;
+}
+
+.process-card::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 60%;
+  background: var(--color-border);
+}
+
+.process-card:last-child::after {
+  display: none;
+}
+
+.process-step {
+  display: block;
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  opacity: 0.3;
+  margin-bottom: var(--spacing-md);
+}
+
+.process-card h3 {
+  margin-bottom: var(--spacing-sm);
+  font-size: 1.25rem;
+}
+
+.process-card p {
+  color: var(--color-paragraph);
+  font-size: 0.95rem;
+}
+
+/* Team */
+.team {
+  background: var(--color-background);
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.team-card {
+  background: var(--color-white);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  transition: all var(--transition-base);
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.team-avatar {
+  width: 96px;
+  height: 96px;
+  background: var(--color-background);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--spacing-lg);
+  color: var(--color-paragraph);
+}
+
+.team-image {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: var(--spacing-lg);
+}
+
+.team-card h3 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.team-card p {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .about-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .mv-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .process-card::after {
+    display: none;
+  }
+}
