@@ -59,21 +59,25 @@ const projects = [
     name: 'NEEL Clinic',
     category: 'Healthcare',
     description: 'Appointment booking system and patient management portal',
+    image: '/images/projects/NeelClinic.png',
   },
   {
     name: 'Afghan Smile',
     category: 'Healthcare',
     description: 'Dental clinic website with online booking',
+    image: '/images/projects/afghan-smile.jpg',
   },
   {
     name: 'QADAM Agency',
     category: 'Business',
     description: 'Digital agency portfolio and client management system',
+    image: '/images/projects/qadam.jpg',
   },
   {
     name: 'Anwar Tani',
     category: 'E-Commerce',
     description: 'Online marketplace for agricultural products',
+    image: '/images/projects/anwar-tani.jpg',
   },
 ];
 
@@ -260,7 +264,11 @@ const Home = () => {
                 transition={{ delay: index * 0.1 }}
               >
                 <div className="project-image">
-                  <Building2 size={64} />
+                  {project.image ? (
+                    <img src={project.image} alt={project.name} />
+                  ) : (
+                    <Building2 size={64} />
+                  )}
                 </div>
                 <div className="project-content">
                   <span className="project-category">{project.category}</span>

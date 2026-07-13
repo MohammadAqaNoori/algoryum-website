@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Building2, ShoppingCart, GraduationCap, Package, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import ThreeBackground from '../components/ThreeBackground';
 import './Portfolio.css';
 
@@ -8,7 +8,7 @@ const projects = [
   {
     name: 'NEEL Clinic',
     category: 'Healthcare',
-    icon: Building2,
+    image: '/images/projects/NeelClinic.png',
     problem: 'Manual appointment booking system causing scheduling conflicts and patient dissatisfaction.',
     solution: 'Built a comprehensive clinic management system with online booking, patient records, and automated reminders.',
     technologies: ['React', 'Node.js', 'MongoDB', 'WhatsApp API'],
@@ -17,7 +17,7 @@ const projects = [
   {
     name: 'Afghan Smile Dental',
     category: 'Healthcare',
-    icon: Building2,
+    image: '/images/projects/afghan-smile.jpg',
     problem: 'No online presence and manual patient management.',
     solution: 'Created a modern website with online appointment booking and patient management system.',
     technologies: ['React', 'Express', 'PostgreSQL', 'WhatsApp Integration'],
@@ -26,7 +26,7 @@ const projects = [
   {
     name: 'QADAM Agency',
     category: 'Business',
-    icon: Building2,
+    image: '/images/projects/qadam.jpg',
     problem: 'Inefficient client management and project tracking.',
     solution: 'Developed a custom agency management platform with CRM and project tracking.',
     technologies: ['React', 'Node.js', 'MongoDB', 'Analytics Dashboard'],
@@ -35,7 +35,7 @@ const projects = [
   {
     name: 'Anwar Tani Plaza',
     category: 'E-Commerce',
-    icon: ShoppingCart,
+    image: '/images/projects/anwar-tani.jpg',
     problem: 'Limited market reach for agricultural products.',
     solution: 'Built a full-featured e-commerce marketplace for farmers and buyers.',
     technologies: ['React', 'Express', 'MongoDB', 'Payment Gateway'],
@@ -44,7 +44,7 @@ const projects = [
   {
     name: 'Aryan Nezhad School',
     category: 'Education',
-    icon: GraduationCap,
+    image: '/images/projects/aryan-nezhad.jpg',
     problem: 'Manual administrative processes and parent communication.',
     solution: 'Implemented a complete school management system with portal for parents and teachers.',
     technologies: ['React', 'Node.js', 'PostgreSQL', 'SMS Integration'],
@@ -53,7 +53,7 @@ const projects = [
   {
     name: 'Smart Inventory System',
     category: 'Enterprise',
-    icon: Package,
+    image: '/images/projects/smart-inventory.jpg',
     problem: 'Lack of real-time inventory visibility across multiple warehouses.',
     solution: 'Built an AI-powered inventory management system with predictive analytics.',
     technologies: ['React', 'Python', 'TensorFlow', 'AWS'],
@@ -97,7 +97,7 @@ const Portfolio = () => {
                 transition={{ delay: index * 0.1 }}
               >
                 <div className="project-image">
-                  <project.icon size={64} />
+                  <img src={project.image} alt={project.name} />
                 </div>
                 <div className="project-content">
                   <span className="project-category">{project.category}</span>
