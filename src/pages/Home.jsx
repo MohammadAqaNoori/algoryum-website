@@ -74,10 +74,10 @@ const projects = [
     image: '/images/projects/qadam.jpg',
   },
   {
-    name: 'Anwar Tani',
-    category: 'E-Commerce',
-    description: 'Online marketplace for agricultural products',
-    image: '/images/projects/anwar-tani.jpg',
+    name: 'Aryan Nezhad School',
+    category: 'Education',
+    description: 'Complete school management system with parent portal',
+    image: '/images/projects/aryan-nezhad.jpg',
   },
 ];
 
