@@ -65,13 +65,13 @@ const projects = [
     name: 'Afghan Smile',
     category: 'Healthcare',
     description: 'Dental clinic website with online booking',
-    image: '/images/projects/afghan-smile.jpg',
+    image: '/images/projects/AfghanSmile.jpeg',
   },
   {
     name: 'QADAM Agency',
     category: 'Business',
     description: 'Digital agency portfolio and client management system',
-    image: '/images/projects/qadam.jpg',
+    image: '/images/projects/QadamProject.jpeg',
   },
   {
     name: 'Aryan Nezhad School',

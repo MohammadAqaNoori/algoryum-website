@@ -17,7 +17,7 @@ const projects = [
   {
     name: 'Afghan Smile Dental',
     category: 'Healthcare',
-    image: '/images/projects/afghan-smile.jpg',
+    image: '/images/projects/AfghanSmile.jpeg',
     problem: 'No online presence and manual patient management.',
     solution: 'Created a modern website with online appointment booking and patient management system.',
     technologies: ['React', 'Express', 'PostgreSQL', 'WhatsApp Integration'],
@@ -26,7 +26,7 @@ const projects = [
   {
     name: 'QADAM Agency',
     category: 'Business',
-    image: '/images/projects/qadam.jpg',
+    image: '/images/projects/QadamProject.jpeg',
     problem: 'Inefficient client management and project tracking.',
     solution: 'Developed a custom agency management platform with CRM and project tracking.',
     technologies: ['React', 'Node.js', 'MongoDB', 'Analytics Dashboard'],
