@@ -146,8 +146,13 @@ const ThreeBackground = ({ variant = 'particles' }) => {
       width: '100%',
       height: '100%',
       zIndex: 0,
+      minHeight: '400px',
     }}>
-      <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
+      <Canvas 
+        camera={{ position: [0, 0, 5], fov: 60 }}
+        style={{ width: '100%', height: '100%' }}
+        gl={{ antialias: true, alpha: true }}
+      >
         <ambientLight intensity={0.5} />
         {variant === 'particles' && <Particles count={1500} />}
         {variant === 'network' && <Network />}
