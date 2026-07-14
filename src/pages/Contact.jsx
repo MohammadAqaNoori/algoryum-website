@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, MessageCircle, Send, CheckCircle, Clock, Zap } from 'lucide-react';
+import { Mail, Phone, MessageCircle, Send, CheckCircle, Clock, Zap } from 'lucide-react';
 import ThreeBackground from '../components/ThreeBackground';
 import './Contact.css';
 
@@ -39,10 +39,9 @@ const Contact = () => {
   };
 
   const contactMethods = [
-    { icon: Mail, title: 'Email Us', subtitle: 'hello@algoryum.com', desc: 'We reply within 24 hours' },
-    { icon: Phone, title: 'Call Us', subtitle: '+93 123 456 789', desc: 'Available 24/7 for emergencies' },
-    { icon: MapPin, title: 'Visit Us', subtitle: 'Kabul, Afghanistan', desc: 'Mon-Fri: 9AM - 6PM AST' },
-    { icon: MessageCircle, title: 'WhatsApp', subtitle: 'Quick Chat', desc: 'Get instant responses' },
+    { icon: Mail, title: 'Email Support', subtitle: 'algoryum.ai@gmail.com', desc: 'Response within 4 hours' },
+    { icon: Phone, title: 'Call Us', subtitle: '+93 70 8824113', desc: 'Available 24/7' },
+    { icon: MessageCircle, title: 'Chat on WhatsApp', subtitle: 'Quick Response', desc: 'Response within 4 hours' },
   ];
 
   const features = [
@@ -274,24 +273,7 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Map Section */}
-      <section className="section map-section">
-        <div className="container">
-          <motion.div
-            className="map-container"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="map-placeholder">
-              <MapPin size={48} />
-              <h3>Kabul, Afghanistan</h3>
-              <p>Serving clients worldwide</p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-    </main>
+      </main>
   );
 };
 

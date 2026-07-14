@@ -20,9 +20,9 @@ const services = [
 ];
 
 const contactInfo = [
-  { icon: Mail, text: 'hello@algoryum.com' },
-  { icon: Phone, text: '+93 123 456 789' },
-  { icon: MapPin, text: 'Kabul, Afghanistan' },
+  { icon: Mail, text: 'algoryum.ai@gmail.com' },
+  { icon: Phone, text: '+93 70 8824113' },
+  { icon: MessageCircle, text: 'WhatsApp: +93 70 8824113' },
 ];
 
 const socialLinks = [
