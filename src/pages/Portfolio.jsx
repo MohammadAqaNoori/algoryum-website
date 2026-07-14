@@ -35,7 +35,7 @@ const projects = [
   {
     name: 'Anwar Tani Plaza',
     category: 'E-Commerce',
-    image: '/images/projects/anwar-tani.jpg',
+    image: '/images/projects/TaniPlaza.png',
     problem: 'Limited market reach for agricultural products.',
     solution: 'Built a full-featured e-commerce marketplace for farmers and buyers.',
     technologies: ['React', 'Express', 'MongoDB', 'Payment Gateway'],
@@ -44,7 +44,7 @@ const projects = [
   {
     name: 'Aryan Nezhad School',
     category: 'Education',
-    image: '/images/projects/aryan-nezhad.jpg',
+    image: '/images/projects/AryenNezhadSchool.png',
     problem: 'Manual administrative processes and parent communication.',
     solution: 'Implemented a complete school management system with portal for parents and teachers.',
     technologies: ['React', 'Node.js', 'PostgreSQL', 'SMS Integration'],
@@ -53,7 +53,7 @@ const projects = [
   {
     name: 'Smart Inventory System',
     category: 'Enterprise',
-    image: '/images/projects/smart-inventory.jpg',
+    image: '/images/projects/SmartInventorySystem.png',
     problem: 'Lack of real-time inventory visibility across multiple warehouses.',
     solution: 'Built an AI-powered inventory management system with predictive analytics.',
     technologies: ['React', 'Python', 'TensorFlow', 'AWS'],
