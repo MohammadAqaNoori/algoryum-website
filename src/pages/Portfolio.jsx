@@ -1,6 +1,7 @@
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Star, Rocket, ArrowUpRight } from 'lucide-react';
 import ThreeBackground from '../components/ThreeBackground';
 import './Portfolio.css';
 
@@ -61,6 +62,33 @@ const projects = [
   },
 ];
 
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+};
+
+const Section = ({ children, className }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  
+  return (
+    <motion.section 
+      ref={ref}
+      className={className}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={staggerContainer}
+    >
+      {children}
+    </motion.section>
+  );
+};
+
 const Portfolio = () => {
   return (
     <main className="portfolio-page">
@@ -74,6 +102,14 @@ const Portfolio = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
+            <motion.span 
+              className="hero-badge"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              <Rocket size={14} /> Our Work
+            </motion.span>
             <h1>Our <span className="text-gradient">Work</span></h1>
             <p>
               Real solutions we've built for real clients. Each project represents 
@@ -84,20 +120,21 @@ const Portfolio = () => {
       </section>
 
       {/* Projects Grid */}
-      <section className="section portfolio-grid-section">
+      <Section className="section portfolio-grid-section">
         <div className="container">
           <div className="portfolio-grid">
             {projects.map((project, index) => (
               <motion.div
                 key={index}
                 className="project-card"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                variants={fadeInUp}
+                whileHover={{ y: -10 }}
               >
                 <div className="project-image">
                   <img src={project.image} alt={project.name} />
+                  <div className="project-overlay">
+                    <ArrowUpRight size={32} />
+                  </div>
                 </div>
                 <div className="project-content">
                   <span className="project-category">{project.category}</span>
@@ -130,25 +167,24 @@ const Portfolio = () => {
             ))}
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* CTA */}
-      <section className="section cta">
+      <Section className="section cta">
         <div className="container">
           <motion.div
             className="cta-content"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            variants={fadeInUp}
           >
             <h2>Have a Project in Mind?</h2>
             <p>Let's discuss how we can help transform your business with intelligent software solutions.</p>
             <Link to="/contact" className="btn btn-primary">
               Start Your Project
+              <ArrowRight size={18} />
             </Link>
           </motion.div>
         </div>
-      </section>
+      </Section>
     </main>
   );
 };

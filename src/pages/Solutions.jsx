@@ -1,9 +1,10 @@
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Building2, GraduationCap, Construction, 
   ShoppingCart, Home, DollarSign, Utensils, 
-  Landmark, ArrowRight 
+  Landmark, ArrowRight, CheckCircle, Star
 } from 'lucide-react';
 import ThreeBackground from '../components/ThreeBackground';
 import './Solutions.css';
@@ -59,6 +60,33 @@ const solutions = [
   },
 ];
 
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+};
+
+const Section = ({ children, className }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  
+  return (
+    <motion.section 
+      ref={ref}
+      className={className}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={staggerContainer}
+    >
+      {children}
+    </motion.section>
+  );
+};
+
 const Solutions = () => {
   return (
     <main className="solutions-page">
@@ -72,6 +100,14 @@ const Solutions = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
+            <motion.span 
+              className="hero-badge"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              <Star size={14} /> Industry Solutions
+            </motion.span>
             <h1>Industry <span className="text-gradient">Solutions</span></h1>
             <p>
               We don't just build software—we solve business problems. 
@@ -82,17 +118,15 @@ const Solutions = () => {
       </section>
 
       {/* Solutions Grid */}
-      <section className="section solutions-grid-section">
+      <Section className="section solutions-grid-section">
         <div className="container">
           <div className="solutions-grid">
             {solutions.map((solution, index) => (
               <motion.div
                 key={index}
                 className="solution-card"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
+                variants={fadeInUp}
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
               >
                 <div className="solution-icon-wrapper">
                   <solution.icon className="solution-icon" size={36} />
@@ -101,7 +135,9 @@ const Solutions = () => {
                 <p>{solution.desc}</p>
                 <div className="solution-features">
                   {solution.features.map((feature, i) => (
-                    <span key={i} className="feature-tag">{feature}</span>
+                    <span key={i} className="feature-tag">
+                      <CheckCircle size={12} /> {feature}
+                    </span>
                   ))}
                 </div>
                 <Link to="/contact" className="solution-link">
@@ -111,25 +147,24 @@ const Solutions = () => {
             ))}
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* CTA */}
-      <section className="section cta">
+      <Section className="section cta">
         <div className="container">
           <motion.div
             className="cta-content"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            variants={fadeInUp}
           >
             <h2>Don't See Your Industry?</h2>
             <p>We have experience across many sectors. Let's discuss your unique requirements.</p>
             <Link to="/contact" className="btn btn-primary">
               Talk to Us
+              <ArrowRight size={18} />
             </Link>
           </motion.div>
         </div>
-      </section>
+      </Section>
     </main>
   );
 };

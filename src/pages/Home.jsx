@@ -1,21 +1,22 @@
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 import { 
   Bot, Globe, Smartphone, MessageCircle, 
   Building2, GraduationCap, ShoppingCart, 
-  HomeIcon, Factory, DollarSign, Utensils, 
-  Landmark, ArrowRight, Star, Users, 
-  Clock, Award, CheckCircle, Zap, Shield, 
-  Handshake, Rocket, Quote 
+  HomeIcon, Factory, DollarSign, ArrowRight, 
+  Users, Clock, Award, Zap, Shield, 
+  Handshake, Rocket, Quote, CheckCircle,
+  ArrowUpRight, Star
 } from 'lucide-react';
 import ThreeBackground from '../components/ThreeBackground';
 import './Home.css';
 
 const stats = [
-  { number: '50+', label: 'Projects Delivered', icon: Award },
-  { number: '30+', label: 'Happy Clients', icon: Users },
-  { number: '5+', label: 'Years Experience', icon: Clock },
-  { number: '24/7', icon: Clock, label: 'Support' },
+  { number: '50+', label: 'Projects Delivered' },
+  { number: '30+', label: 'Happy Clients' },
+  { number: '5+', label: 'Years Experience' },
+  { number: '24/7', label: 'Support' },
 ];
 
 const services = [
@@ -24,24 +25,28 @@ const services = [
     title: 'AI Solutions',
     desc: 'AI-powered systems, machine learning, NLP, and intelligent automation that transform your business operations.',
     path: '/services/ai',
+    features: ['Machine Learning', 'NLP', 'Computer Vision'],
   },
   {
     icon: Globe,
     title: 'Web Development',
     desc: 'Corporate websites, e-commerce platforms, business portals, and custom web applications.',
     path: '/services/web',
+    features: ['E-Commerce', 'CMS', 'Custom Web Apps'],
   },
   {
     icon: Smartphone,
     title: 'Mobile Apps',
     desc: 'Native and cross-platform mobile applications for iOS and Android that engage your customers.',
     path: '/services/mobile',
+    features: ['iOS', 'Android', 'Flutter'],
   },
   {
     icon: MessageCircle,
     title: 'WhatsApp Business',
     desc: 'Automate customer communication, orders, and support through WhatsApp integration.',
     path: '/services/whatsapp',
+    features: ['Automation', 'Chatbots', 'CRM Integration'],
   },
 ];
 
@@ -109,18 +114,55 @@ const testimonials = [
     quote: 'Algoryum transformed our business with their AI solutions. The automation they implemented saved us 40% in operational costs.',
     name: 'Ahmad Reza',
     position: 'CEO, NEEL Clinic',
+    rating: 5,
   },
   {
     quote: 'Professional, responsive, and technically excellent. They delivered our e-commerce platform on time and exceeded expectations.',
     name: 'Sarah Mahmoud',
     position: 'Founder, Afghan Smile',
+    rating: 5,
   },
   {
     quote: 'Their team understands business needs, not just code. They built solutions that actually drive growth for our company.',
     name: 'Mohammad Nasser',
     position: 'Director, QADAM Agency',
+    rating: 5,
   },
 ];
+
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } }
+};
+
+const Section = ({ children, className, id }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  
+  return (
+    <motion.section 
+      ref={ref}
+      className={className}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={staggerContainer}
+      id={id}
+    >
+      {children}
+    </motion.section>
+  );
+};
 
 const Home = () => {
   return (
@@ -131,54 +173,96 @@ const Home = () => {
         <div className="hero-content">
           <motion.div
             className="hero-text"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <span className="hero-badge">AI-Driven Software Engineering</span>
-            <h1>
+            <motion.span 
+              className="hero-badge"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+            >
+              <Zap size={16} /> AI-Driven Software Engineering
+            </motion.span>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+            >
               Intelligent Solutions for <span className="text-gradient">Growing Businesses</span>
-            </h1>
-            <p>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+            >
               We build software that helps businesses grow through AI, automation, and custom digital solutions. 
               From startups to enterprises, we transform ideas into scalable technology.
-            </p>
-            <div className="hero-buttons">
+            </motion.p>
+            <motion.div 
+              className="hero-buttons"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+            >
               <Link to="/contact" className="btn btn-primary">
                 Start Your Project
+                <ArrowRight size={18} />
               </Link>
               <Link to="/portfolio" className="btn btn-secondary">
                 View Our Work
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
           
           <motion.div
             className="hero-stats"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
           >
             {stats.map((stat, index) => (
-              <div key={index} className="stat-item">
+              <motion.div 
+                key={index} 
+                className="stat-item"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.7 + index * 0.1, duration: 0.4 }}
+              >
                 <span className="stat-number">{stat.number}</span>
                 <span className="stat-label">{stat.label}</span>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
         </div>
+        
+        {/* Scroll indicator */}
+        <motion.div 
+          className="scroll-indicator"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2 }}
+        >
+          <motion.div 
+            animate={{ y: [0, 10, 0] }}
+            transition={{ repeat: Infinity, duration: 1.5 }}
+          >
+            <ArrowDown size={24} />
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Services Overview */}
-      <section className="section services-overview">
+      <Section className="section services-overview">
         <div className="container">
-          <motion.div
+          <motion.div 
             className="section-header"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            variants={fadeInUp}
           >
-            <span className="section-badge">Our Services</span>
+            <span className="section-badge">
+              <Star size={14} /> Our Services
+            </span>
             <h2>Comprehensive Software Solutions</h2>
             <p>End-to-end development services tailored to your business needs</p>
           </motion.div>
@@ -188,16 +272,21 @@ const Home = () => {
               <motion.div
                 key={index}
                 className="service-card"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                variants={fadeInUp}
+                whileHover={{ y: -10, transition: { duration: 0.3 } }}
               >
                 <div className="service-icon-wrapper">
                   <service.icon className="service-icon" size={32} />
                 </div>
                 <h3>{service.title}</h3>
                 <p>{service.desc}</p>
+                <div className="service-features">
+                  {service.features.map((feature, i) => (
+                    <span key={i} className="feature-tag">
+                      <CheckCircle size={12} /> {feature}
+                    </span>
+                  ))}
+                </div>
                 <Link to={service.path} className="service-link">
                   Learn more <ArrowRight size={16} />
                 </Link>
@@ -205,18 +294,18 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* Industries */}
-      <section className="section industries">
+      <Section className="section industries">
         <div className="container">
-          <motion.div
+          <motion.div 
             className="section-header"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            variants={fadeInUp}
           >
-            <span className="section-badge">Industries We Serve</span>
+            <span className="section-badge">
+              <Building2 size={14} /> Industries We Serve
+            </span>
             <h2>Solutions for Every Sector</h2>
             <p>Deep expertise across multiple industries</p>
           </motion.div>
@@ -226,10 +315,8 @@ const Home = () => {
               <motion.div
                 key={index}
                 className="industry-card"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
+                variants={scaleIn}
+                whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
               >
                 <industry.icon className="industry-icon" size={40} />
                 <span className="industry-name">{industry.name}</span>
@@ -237,18 +324,18 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* Recent Projects */}
-      <section className="section projects">
+      <Section className="section projects" id="projects">
         <div className="container">
-          <motion.div
+          <motion.div 
             className="section-header"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            variants={fadeInUp}
           >
-            <span className="section-badge">Our Work</span>
+            <span className="section-badge">
+              <Rocket size={14} /> Our Work
+            </span>
             <h2>Recent Projects</h2>
             <p>Real solutions we've built for real clients</p>
           </motion.div>
@@ -258,10 +345,8 @@ const Home = () => {
               <motion.div
                 key={index}
                 className="project-card"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                variants={fadeInUp}
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
               >
                 <div className="project-image">
                   {project.image ? (
@@ -269,6 +354,9 @@ const Home = () => {
                   ) : (
                     <Building2 size={64} />
                   )}
+                  <div className="project-overlay">
+                    <ArrowUpRight size={24} />
+                  </div>
                 </div>
                 <div className="project-content">
                   <span className="project-category">{project.category}</span>
@@ -279,24 +367,30 @@ const Home = () => {
             ))}
           </div>
 
-          <div className="projects-cta">
+          <motion.div 
+            className="projects-cta"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
             <Link to="/portfolio" className="btn btn-dark">
               View All Projects
+              <ArrowRight size={18} />
             </Link>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </Section>
 
       {/* Why Choose Algoryum */}
-      <section className="section why-choose">
+      <Section className="section why-choose">
         <div className="container">
-          <motion.div
+          <motion.div 
             className="section-header"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            variants={fadeInUp}
           >
-            <span className="section-badge">Why Algoryum</span>
+            <span className="section-badge">
+              <Shield size={14} /> Why Algoryum
+            </span>
             <h2>More Than Just a Development Shop</h2>
             <p>We become your strategic technology partner</p>
           </motion.div>
@@ -306,13 +400,11 @@ const Home = () => {
               <motion.div
                 key={index}
                 className="why-card"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                variants={fadeInUp}
+                whileHover={{ y: -5, transition: { duration: 0.3 } }}
               >
                 <div className="why-icon-wrapper">
-                  <item.icon className="why-icon" size={32} />
+                  <item.icon className="why-icon" size={28} />
                 </div>
                 <h3>{item.title}</h3>
                 <p>{item.desc}</p>
@@ -320,18 +412,18 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* Testimonials */}
-      <section className="section testimonials">
+      <Section className="section testimonials">
         <div className="container">
-          <motion.div
+          <motion.div 
             className="section-header"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            variants={fadeInUp}
           >
-            <span className="section-badge">Testimonials</span>
+            <span className="section-badge">
+              <Quote size={14} /> Testimonials
+            </span>
             <h2>What Our Clients Say</h2>
             <p>Trusted by businesses across industries</p>
           </motion.div>
@@ -341,16 +433,19 @@ const Home = () => {
               <motion.div
                 key={index}
                 className="testimonial-card"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                variants={fadeInUp}
+                whileHover={{ y: -5 }}
               >
-                <Quote className="testimonial-quote-icon" size={48} />
+                <div className="testimonial-rating">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} size={16} fill="#2EBE67" color="#2EBE67" />
+                  ))}
+                </div>
+                <Quote className="testimonial-quote-icon" size={40} />
                 <p className="testimonial-text">{testimonial.quote}</p>
                 <div className="testimonial-author">
                   <div className="author-avatar">
-                    <Users size={24} />
+                    <Users size={20} />
                   </div>
                   <div className="author-info">
                     <span className="author-name">{testimonial.name}</span>
@@ -361,22 +456,27 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* CTA Section */}
-      <section className="section cta">
+      <Section className="section cta">
         <div className="container">
           <motion.div
             className="cta-content"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            variants={fadeInUp}
           >
-            <h2>Ready to Transform Your Business?</h2>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              Ready to Transform Your Business?
+            </motion.h2>
             <p>Let's discuss how AI and custom software can accelerate your growth.</p>
             <div className="cta-buttons">
               <Link to="/contact" className="btn btn-primary">
                 Get a Free Consultation
+                <ArrowRight size={18} />
               </Link>
               <Link to="/services" className="btn btn-secondary">
                 Explore Services
@@ -384,9 +484,16 @@ const Home = () => {
             </div>
           </motion.div>
         </div>
-      </section>
+      </Section>
     </main>
   );
 };
 
 export default Home;
+
+// ArrowDown icon component
+const ArrowDown = ({ size }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 5v14M19 12l-7 7-7-7"/>
+  </svg>
+);

@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  Bot, Globe, Smartphone, MessageSquare, 
-  Settings, Cloud, Search, ArrowRight 
+  Bot, Globe, Smartphone, Settings, 
+  Cloud, Search, ArrowRight, CheckCircle, Star
 } from 'lucide-react';
 import ThreeBackground from '../components/ThreeBackground';
 import './Services.css';
@@ -89,6 +90,33 @@ const serviceCategories = [
   },
 ];
 
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+};
+
+const Section = ({ children, className }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  
+  return (
+    <motion.section 
+      ref={ref}
+      className={className}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={staggerContainer}
+    >
+      {children}
+    </motion.section>
+  );
+};
+
 const Services = () => {
   const [activeCategory, setActiveCategory] = useState(serviceCategories[0]);
 
@@ -104,6 +132,14 @@ const Services = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
+            <motion.span 
+              className="hero-badge"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              <Star size={14} /> Our Services
+            </motion.span>
             <h1>Our <span className="text-gradient">Services</span></h1>
             <p>
               Comprehensive software solutions tailored to your business needs. 
@@ -114,7 +150,7 @@ const Services = () => {
       </section>
 
       {/* Services Grid */}
-      <section className="section services-list">
+      <Section className="section services-list">
         <div className="container">
           <div className="services-category-grid">
             {serviceCategories.map((category) => (
@@ -122,12 +158,12 @@ const Services = () => {
                 key={category.id}
                 className={`category-card ${activeCategory.id === category.id ? 'active' : ''}`}
                 onClick={() => setActiveCategory(category)}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                variants={fadeInUp}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
                 <div className="category-icon-wrapper">
-                  <category.icon className="category-icon" size={28} />
+                  <category.icon className="category-icon" size={24} />
                 </div>
                 <h3>{category.title}</h3>
                 <p>{category.shortDesc}</p>
@@ -141,7 +177,7 @@ const Services = () => {
             key={activeCategory.id}
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.4 }}
           >
             <div className="detail-header">
               <div className="detail-icon-wrapper">
@@ -155,37 +191,48 @@ const Services = () => {
 
             <div className="detail-services">
               {activeCategory.services.map((service, index) => (
-                <div key={index} className="detail-service">
-                  <h4>{service.name}</h4>
-                  <p>{service.desc}</p>
-                </div>
+                <motion.div 
+                  key={index} 
+                  className="detail-service"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <div className="detail-service-icon">
+                    <CheckCircle size={20} />
+                  </div>
+                  <div>
+                    <h4>{service.name}</h4>
+                    <p>{service.desc}</p>
+                  </div>
+                </motion.div>
               ))}
             </div>
 
             <Link to="/contact" className="btn btn-primary">
               Get Started with {activeCategory.title}
+              <ArrowRight size={18} />
             </Link>
           </motion.div>
         </div>
-      </section>
+      </Section>
 
       {/* CTA */}
-      <section className="section cta">
+      <Section className="section cta">
         <div className="container">
           <motion.div
             className="cta-content"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            variants={fadeInUp}
           >
             <h2>Need a Custom Solution?</h2>
             <p>Let's discuss your specific requirements and build something extraordinary.</p>
             <Link to="/contact" className="btn btn-primary">
               Talk to Our Experts
+              <ArrowRight size={18} />
             </Link>
           </motion.div>
         </div>
-      </section>
+      </Section>
     </main>
   );
 };

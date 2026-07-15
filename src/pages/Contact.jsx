@@ -41,7 +41,7 @@ const Contact = () => {
   const contactMethods = [
     { icon: Mail, title: 'Email Support', subtitle: 'algoryum.ai@gmail.com', desc: 'Response within 4 hours' },
     { icon: Phone, title: 'Call Us', subtitle: '+93 70 8824113', desc: 'Available 24/7' },
-    { icon: MessageCircle, title: 'Chat on WhatsApp', subtitle: 'Quick Response', desc: 'Response within 4 hours' },
+    { icon: MessageCircle, title: 'Chat on WhatsApp', subtitle: '+93 70 8824113', desc: 'Response within 4 hours' },
   ];
 
   const features = [
