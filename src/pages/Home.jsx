@@ -6,7 +6,7 @@ import {
   Building2, GraduationCap, ShoppingCart, 
   HomeIcon, Factory, DollarSign, ArrowRight, 
   Users, Clock, Award, Zap, Shield, 
-  Handshake, Rocket, Quote, CheckCircle,
+  Handshake, Rocket, CheckCircle,
   ArrowUpRight, Star
 } from 'lucide-react';
 import ThreeBackground from '../components/ThreeBackground';
@@ -63,26 +63,26 @@ const projects = [
   {
     name: 'NEEL Clinic',
     category: 'Healthcare',
-    description: 'Appointment booking system and patient management portal',
+    description: 'Appointment booking system with AI voice agent',
     image: '/images/projects/NeelClinic.png',
   },
   {
     name: 'Afghan Smile',
     category: 'Healthcare',
-    description: 'Dental clinic website with online booking',
+    description: 'Dental clinic database application',
     image: '/images/projects/AfghanSmile.jpeg',
   },
   {
     name: 'QADAM Agency',
     category: 'Business',
-    description: 'Digital agency portfolio and client management system',
+    description: 'Digital agency website with MySQL',
     image: '/images/projects/QadamProject.jpeg',
   },
   {
-    name: 'Anwar Tani Plaza',
-    category: 'E-Commerce',
-    description: 'Online marketplace for agricultural products',
-    image: '/images/projects/TaniPlaza.png',
+    name: 'Aryan Nezhad School',
+    category: 'Education',
+    description: 'School management database system',
+    image: '/images/projects/AryenNezhadSchool.png',
   },
 ];
 
@@ -106,27 +106,6 @@ const whyChooseUs = [
     icon: Handshake,
     title: 'Dedicated Support',
     desc: '24/7 support and maintenance to keep your systems running smoothly.',
-  },
-];
-
-const testimonials = [
-  {
-    quote: 'Algoryum transformed our business with their AI solutions. The automation they implemented saved us 40% in operational costs.',
-    name: 'Ahmad Reza',
-    position: 'CEO, NEEL Clinic',
-    rating: 5,
-  },
-  {
-    quote: 'Professional, responsive, and technically excellent. They delivered our e-commerce platform on time and exceeded expectations.',
-    name: 'Sarah Mahmoud',
-    position: 'Founder, Afghan Smile',
-    rating: 5,
-  },
-  {
-    quote: 'Their team understands business needs, not just code. They built solutions that actually drive growth for our company.',
-    name: 'Mohammad Nasser',
-    position: 'Director, QADAM Agency',
-    rating: 5,
   },
 ];
 
@@ -378,83 +357,6 @@ const Home = () => {
               <ArrowRight size={18} />
             </Link>
           </motion.div>
-        </div>
-      </Section>
-
-      {/* Why Choose Algoryum */}
-      <Section className="section why-choose">
-        <div className="container">
-          <motion.div 
-            className="section-header"
-            variants={fadeInUp}
-          >
-            <span className="section-badge">
-              <Shield size={14} /> Why Algoryum
-            </span>
-            <h2>More Than Just a Development Shop</h2>
-            <p>We become your strategic technology partner</p>
-          </motion.div>
-
-          <div className="why-grid">
-            {whyChooseUs.map((item, index) => (
-              <motion.div
-                key={index}
-                className="why-card"
-                variants={fadeInUp}
-                whileHover={{ y: -5, transition: { duration: 0.3 } }}
-              >
-                <div className="why-icon-wrapper">
-                  <item.icon className="why-icon" size={28} />
-                </div>
-                <h3>{item.title}</h3>
-                <p>{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* Testimonials */}
-      <Section className="section testimonials">
-        <div className="container">
-          <motion.div 
-            className="section-header"
-            variants={fadeInUp}
-          >
-            <span className="section-badge">
-              <Quote size={14} /> Testimonials
-            </span>
-            <h2>What Our Clients Say</h2>
-            <p>Trusted by businesses across industries</p>
-          </motion.div>
-
-          <div className="testimonials-grid">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                className="testimonial-card"
-                variants={fadeInUp}
-                whileHover={{ y: -5 }}
-              >
-                <div className="testimonial-rating">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} size={16} fill="#2EBE67" color="#2EBE67" />
-                  ))}
-                </div>
-                <Quote className="testimonial-quote-icon" size={40} />
-                <p className="testimonial-text">{testimonial.quote}</p>
-                <div className="testimonial-author">
-                  <div className="author-avatar">
-                    <Users size={20} />
-                  </div>
-                  <div className="author-info">
-                    <span className="author-name">{testimonial.name}</span>
-                    <span className="author-position">{testimonial.position}</span>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </Section>
 

@@ -6,13 +6,13 @@
   z-index: 1000;
   background: transparent;
   transition: all var(--transition-base);
-  padding: 12px 0;
+  padding: 16px 0;
 }
 
 .header.scrolled {
   background: var(--color-white);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-  padding: 8px 0;
+  padding: 10px 0;
 }
 
 .header-container {
@@ -30,13 +30,14 @@
 }
 
 .logo-img {
-  height: 70px;
+  height: 85px;
   width: auto;
   object-fit: contain;
+  border-radius: 8px;
 }
 
 .scrolled .logo-img {
-  height: 56px;
+  height: 65px;
 }
 
 .desktop-nav {

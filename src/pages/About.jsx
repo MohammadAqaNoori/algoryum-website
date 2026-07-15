@@ -2,7 +2,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { 
   Target, Eye, Lightbulb, Handshake, 
-  Zap, Shield, Users, ArrowRight, 
+  Zap, Shield, ArrowRight, 
   CheckCircle, Star, Rocket
 } from 'lucide-react';
 import ThreeBackground from '../components/ThreeBackground';
@@ -37,13 +37,6 @@ const process = [
   { step: '03', title: 'Development', desc: 'We build your solution using agile methodology.' },
   { step: '04', title: 'Testing', desc: 'We ensure quality through rigorous testing and validation.' },
   { step: '05', title: 'Deployment', desc: 'We launch your solution and provide ongoing support.' },
-];
-
-const team = [
-  { name: 'CEO', role: 'Chief Executive Officer' },
-  { name: 'CTO', role: 'Chief Technology Officer' },
-  { name: 'Lead Dev', role: 'Lead Developer' },
-  { name: 'PM', role: 'Project Manager' },
 ];
 
 const fadeInUp = {
@@ -212,43 +205,6 @@ const About = () => {
                     <ArrowRight size={20} />
                   </div>
                 )}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* Team */}
-      <Section className="section team">
-        <div className="container">
-          <motion.div 
-            className="section-header"
-            variants={fadeInUp}
-          >
-            <span className="section-badge">
-              <Users size={14} /> Our Team
-            </span>
-            <h2>Meet the Experts</h2>
-            <p>Talented professionals dedicated to your success</p>
-          </motion.div>
-
-          <div className="team-grid">
-            {team.map((member, index) => (
-              <motion.div
-                key={index}
-                className="team-card"
-                variants={fadeInUp}
-                whileHover={{ scale: 1.03 }}
-              >
-                <div className="team-avatar">
-                  <Users size={40} />
-                </div>
-                <h3>{member.name}</h3>
-                <p>{member.role}</p>
-                <div className="team-social">
-                  <span>LinkedIn</span>
-                  <span>Twitter</span>
-                </div>
               </motion.div>
             ))}
           </div>
